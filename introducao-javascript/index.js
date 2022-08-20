@@ -1,49 +1,48 @@
-// IMC massa / massa*altura
+var pacientes = document.querySelectorAll('.paciente');
 
-var paciente1 = document.querySelector("#primeiroPaciente"); // Essa linha serve para pegarmos o array do primeiro paciente [nome, peso, altura, gordura e imc]
-var nome = paciente1.querySelector(".info-nome"); 
+const  title = document.querySelector(".título")
+console.log(title.textContent)
+title.textContent = "Rayssa linda e maravilhosa" 
 
-var peso = paciente1.querySelector('.info-peso');
-var pesoNumber = Number(peso);
+for(var a = 0; a < pacientes.length; a++){
 
-    let pesoValido = false;
-    let alturaValida = false;
-
-
-var altura = paciente1.querySelector('.info-altura');
-var alturaNumber = altura.textContent;
-console.log(alturaNumber)
-
-var imcPreenche = paciente1.querySelector('.info-imc')
+ var paciente = pacientes[a];   
+ console.log(pacientes[a])
+var pesoTd = paciente.querySelector('.info-peso');
+var peso = pesoTd.textContent;
 
 
+var alturaTd = paciente.querySelector('.info-altura');
+var altura = alturaTd.textContent;
 
 
+var imcTd = paciente.querySelector('.info-imc');
 
-if (alturaNumber >= 4 && alturaNumber <=0 ){
 
-    imcPreenche.textContent = "Altura inválida"
-    console.log("altura inválida")
+    if(peso <= 35 || peso >= 200){
+
+    var pesoValido = false;
+    imcTd.textContent = "Peso inválido!"; 
+    console.log("Peso inválido")
+    paciente.classList.add("paciente-invalido")
+    }else{
+
+        pesoValido = true;
+
+    }
+
+    if(altura <= 0 || altura >= 3.10){
+
+    var alturaValida = false;
+    imcTd.textContent = "Altura inválida!";
+    paciente.classList.add("paciente-invalido")
+    }else{
+
+        alturaValida = true;
+    }
+
+    if(pesoValido === true && alturaValida === true){
+
+      imcTd.textContent = (peso/(altura*altura)).toFixed(0)
+    }
 }
-
-
-// if(pesoValido == true && alturaValida == true)
-//     {
-//     var imc = (pesoNumber/(alturaNumber*alturaNumber)).toFixed(0)
-// }else{""}
-
-
-
-
-// console.log(imcPreenche)
-
-
-
-
-
-
-
-
-// console.log(imc)
-// console.log(pesoNumber+alturaNumber)
-// console.log(`o Nome do Paciente é ${nome},  pesa ${peso}Kg e mede ${altura}`)
